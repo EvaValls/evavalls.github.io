@@ -21,8 +21,8 @@ function init() {
                 node.frustumCulled = false;
             }
         } );
-        mixer = new THREE.AnimationMixer( avatar );
-        mixer.clipAction( animations[ 0 ] ).play();
+       /* mixer = new THREE.AnimationMixer( avatar );
+        mixer.clipAction( animations[ 0 ] ).play();*/
         scene.add( avatar );
     } );
     //
@@ -55,11 +55,11 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
-function animate() {
+/*function animate() {
     requestAnimationFrame( animate );
     render();
   
-}
+}*/
 function render() {
     var delta = clock.getDelta();
     if ( mixer !== undefined ) {
