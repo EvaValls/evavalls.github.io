@@ -1,6 +1,6 @@
-import * as THREE from '../libs/three.module.js';
-import { ColladaLoader } from '../libs/ColladaLoader.js';
-import { OrbitControls } from '../libs/OrbitControls.js';
+import * as THREE from '../libs/builds/three.module.js';
+import { ColladaLoader } from '../libs/loaders/ColladaLoader.js';
+import { OrbitControls } from '../libs/controls/OrbitControls.js';
 var container, clock, controls;
 var camera, scene, renderer, mixer;
 init();
