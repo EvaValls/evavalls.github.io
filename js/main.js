@@ -58,7 +58,7 @@ function onWindowResize() {
 function animate() {
     requestAnimationFrame( animate );
     render();
-    stats.update();
+  
 }
 function render() {
     var delta = clock.getDelta();
