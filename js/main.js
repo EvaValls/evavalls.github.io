@@ -4,7 +4,7 @@ import { OrbitControls } from '../libs/controls/OrbitControls.js';
 var container, clock, controls;
 var camera, scene, renderer, mixer;
 init();
-animate();
+//animate();
 function init() {
     container = document.getElementById( 'container' );
     camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 1, 1000 );
