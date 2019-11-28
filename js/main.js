@@ -1,4 +1,4 @@
-import * as THREE from '../libs/builds/three.module.js';
+import * as THREE from '../libs/build/three.module.js';
 import { ColladaLoader } from '../libs/loaders/ColladaLoader.js';
 import { OrbitControls } from '../libs/controls/OrbitControls.js';
 var container, clock, controls;
