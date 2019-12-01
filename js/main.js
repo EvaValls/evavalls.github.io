@@ -37,7 +37,7 @@ function init() {
     //
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( window.innerWidth/3, window.innerHeight );
     container.appendChild( renderer.domElement );
     //
     controls = new OrbitControls( camera, renderer.domElement );
@@ -53,7 +53,7 @@ function init() {
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( window.innerWidth/3, window.innerHeight );
 }
 /*function animate() {
     requestAnimationFrame( animate );

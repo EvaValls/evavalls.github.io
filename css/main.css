@@ -2,7 +2,9 @@
     font-family: CenturyGothic;
     src: url(../fonts/CenturyGothic.ttf);
   }
-
+* {
+    box-sizing: border-box;
+}
 .main-page{
     background: linear-gradient(45deg, #00000005, #00000005, #00000005, #000000a6);
     font-family: CenturyGothic;
@@ -26,6 +28,7 @@
     float: left;
     width: 50%;
     padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
 }
 
 h1 {
