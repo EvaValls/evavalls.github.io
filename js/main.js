@@ -13,7 +13,7 @@ function init() {
     clock = new THREE.Clock();
     // collada
     var loader = new ColladaLoader();
-    loader.load( 'stormtrooper.dae', function ( collada ) {
+    loader.load( 'robot.dae', function ( collada ) {
         var animations = collada.animations;
         var avatar = collada.scene;
         avatar.traverse( function ( node ) {
