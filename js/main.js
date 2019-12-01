@@ -4,8 +4,7 @@ import { OrbitControls } from '../libs/controls/OrbitControls.js';
 var container, clock, controls;
 var camera, scene, renderer, mixer;
 init();
-render();
-//animate();
+animate();
 function init() {
     container = document.getElementById( 'container' );
     camera = new THREE.PerspectiveCamera( 25, container.offsetWidth / container.offsetHeight, 1, 1000 );//( 25, window.innerWidth / window.innerHeight, 1, 1000 );
@@ -14,7 +13,7 @@ function init() {
     clock = new THREE.Clock();
     // collada
     var loader = new ColladaLoader();
-    loader.load( 'robot.dae', function ( collada ) {
+    loader.load( 'stormtrooper.dae', function ( collada ) {
         var animations = collada.animations;
         var avatar = collada.scene;
         avatar.traverse( function ( node ) {
@@ -56,11 +55,11 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(container.offsetWidth, container.offsetHeight)//( window.innerWidth, window.innerHeight );
 }
-/*function animate() {
+function animate() {
     requestAnimationFrame( animate );
     render();
   
-}*/
+}
 function render() {
     var delta = clock.getDelta();
     if ( mixer !== undefined ) {
