@@ -7,7 +7,7 @@ init();
 //animate();
 function init() {
     container = document.getElementById( 'container' );
-    camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 1, 1000 );
+    camera = new THREE.PerspectiveCamera( 25, container.offsetWidth / container.offsetHeight, 1, 1000 );//( 25, window.innerWidth / window.innerHeight, 1, 1000 );
     camera.position.set( 15, 10, - 15 );
     scene = new THREE.Scene();
     clock = new THREE.Clock();
@@ -35,9 +35,9 @@ function init() {
     scene.add( camera );
     camera.add( pointLight );
     //
-    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer = new THREE.WebGLRenderer( { antialias: true, alpha:true } );
     renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize( window.innerWidth/3, window.innerHeight );
+    renderer.setSize(container.offsetWidth, container.offsetHeight)//( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
     //
     controls = new OrbitControls( camera, renderer.domElement );
@@ -51,9 +51,9 @@ function init() {
     window.addEventListener( 'resize', onWindowResize, false );
 }
 function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = container.offsetWidth/container.offsetHeight //window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth/3, window.innerHeight );
+    renderer.setSize(container.offsetWidth, container.offsetHeight)//( window.innerWidth, window.innerHeight );
 }
 /*function animate() {
     requestAnimationFrame( animate );
