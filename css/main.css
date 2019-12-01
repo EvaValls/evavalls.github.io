@@ -22,6 +22,12 @@
 .stretch{
     font-stretch: semi-condensed;
 }
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
 h1 {
     display: block;
     font-size: 3em;
