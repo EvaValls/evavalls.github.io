@@ -23,6 +23,12 @@ function init() {
         } );
        /* mixer = new THREE.AnimationMixer( avatar );
         mixer.clipAction( animations[ 0 ] ).play();*/
+        var meshes = avatar.children;
+        for(var i in meshes)
+        {
+            if(meshes[i],isMesh)
+                meshes[i].material.side = THREE.DoubleSide;
+        }
         scene.add( avatar );
     } );
     //
