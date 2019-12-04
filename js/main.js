@@ -26,7 +26,7 @@ function init() {
         var meshes = avatar.children;
         for(var i in meshes)
         {
-            if(meshes[i],isMesh)
+            if(meshes[i].isMesh)
                 meshes[i].material.side = THREE.DoubleSide;
         }
         scene.add( avatar );
