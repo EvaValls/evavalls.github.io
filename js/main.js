@@ -26,8 +26,8 @@ function init() {
         scene.add( avatar );
     } );
     //
-    var gridHelper = new THREE.GridHelper( 10, 20 );
-    scene.add( gridHelper );
+   /* var gridHelper = new THREE.GridHelper( 10, 20 );
+    scene.add( gridHelper );*/
     //
     var ambientLight = new THREE.AmbientLight( 0xffffff, 0.2 );
     scene.add( ambientLight );
@@ -40,12 +40,12 @@ function init() {
     renderer.setSize(container.offsetWidth, container.offsetHeight)//( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
     //
-   /* controls = new OrbitControls( camera, renderer.domElement );
-    controls.screenSpacePanning = true;
+    controls = new OrbitControls( camera, renderer.domElement );
+    controls.screenSpacePanning = false;
     controls.minDistance = 5;
     controls.maxDistance = 40;
     controls.target.set( 0, 2, 0 );
-    controls.update();*/
+    controls.update();
 
     //
     window.addEventListener( 'resize', onWindowResize, false );
