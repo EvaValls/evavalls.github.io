@@ -12,7 +12,7 @@
     height: 100vh;
   }
 .main-page{
-    background: linear-gradient(45deg, #00000005, #00000005, #00000005, #000000a6);
+    background: linear-gradient(90deg, #00000005, #00000005, #00000005, #000000a6);
     font-family: CenturyGothic;
     margin: 0;
 }
@@ -37,7 +37,12 @@
     padding: 10px;
     height: 100vh;
 }
-
+.column .presentation{
+    min-width: 620px;
+}
+.column #container{
+    max-width: 400px;
+}
 h1 {
     display: block;
     font-size: 3em;
