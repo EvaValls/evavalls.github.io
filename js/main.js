@@ -30,6 +30,12 @@ function init() {
     loader.load( 'robot.dae', function ( collada ) {
 
         robot = collada.scene;
+        var meshes = robot.children;
+        for(var i in meshes)
+        {
+            if(meshes[i].isMesh)
+                meshes[i].material.side = THREE.DoubleSide;
+        }
 
     } );
 
@@ -44,7 +50,7 @@ function init() {
 
     //
 
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer({alpha:true});
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( container.offsetWidth, container.offsetHeight );
     container.appendChild( renderer.domElement );
