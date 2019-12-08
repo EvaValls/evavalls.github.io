@@ -1,59 +1,59 @@
 import * as THREE from '../libs/build/three.module.js';
 import { ColladaLoader } from '../libs/loaders/ColladaLoader.js';
 import { OrbitControls } from '../libs/controls/OrbitControls.js';
-var container, clock, controls;
-var camera, scene, renderer, mixer;
+var container, clock;
+var camera, scene, renderer, mixer,robot;
 init();
 animate();
 function init() {
     container = document.getElementById( 'container' );
-    camera = new THREE.PerspectiveCamera( 25, container.offsetWidth / container.offsetHeight, 1, 1000 );//( 25, window.innerWidth / window.innerHeight, 1, 1000 );
-    camera.position.set( 15, 10, - 15 );
+
+    camera = new THREE.PerspectiveCamera( 45, container.offsetWidth / container.offsetHeight, 0.1, 2000 );
+    camera.position.set( 8, 10, 8 );
+    camera.lookAt( 0, 3, 0 );
+
     scene = new THREE.Scene();
+
     clock = new THREE.Clock();
-    // collada
-    var loader = new ColladaLoader();
-    loader.load( 'robot.dae', function ( collada ) {
-        var animations = collada.animations;
-        var avatar = collada.scene;
-        avatar.traverse( function ( node ) {
-            if ( node.isSkinnedMesh ) {
-                node.frustumCulled = false;
-            }
-        } );
-       /* mixer = new THREE.AnimationMixer( avatar );
-        mixer.clipAction( animations[ 0 ] ).play();*/
-        var meshes = avatar.children;
-        for(var i in meshes)
-        {
-            if(meshes[i].isMesh)
-                meshes[i].material.side = THREE.DoubleSide;
-        }
-        scene.add( avatar );
+
+    // loading manager
+
+    var loadingManager = new THREE.LoadingManager( function () {
+
+        scene.add( robot );
+
     } );
-    //
-   /* var gridHelper = new THREE.GridHelper( 10, 20 );
-    scene.add( gridHelper );*/
-    //
-    var ambientLight = new THREE.AmbientLight( 0xffffff, 0.2 );
-    scene.add( ambientLight );
-    var pointLight = new THREE.PointLight( 0xffffff, 0.8 );
-    scene.add( camera );
-    camera.add( pointLight );
-    //
-    renderer = new THREE.WebGLRenderer( { antialias: true, alpha:true } );
-    renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize(container.offsetWidth, container.offsetHeight)//( window.innerWidth, window.innerHeight );
-    container.appendChild( renderer.domElement );
-    //
-    controls = new OrbitControls( camera, renderer.domElement );
-    controls.screenSpacePanning = false;
-    controls.minDistance = 5;
-    controls.maxDistance = 40;
-    controls.target.set( 0, 2, 0 );
-    controls.update();
+
+    // collada
+
+    var loader = new ColladaLoader( loadingManager );
+    loader.load( 'robot.dae', function ( collada ) {
+
+        robot = collada.scene;
+
+    } );
 
     //
+
+    var ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+    scene.add( ambientLight );
+
+    var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
+    directionalLight.position.set( 1, 1, 0 ).normalize();
+    scene.add( directionalLight );
+
+    //
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize( container.offsetWidth, container.offsetHeight );
+    container.appendChild( renderer.domElement );
+
+    //
+
+
+    //
+
     window.addEventListener( 'resize', onWindowResize, false );
 }
 function onWindowResize() {
